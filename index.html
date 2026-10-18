@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, intial-scale=1.0" />
+    <title>For j</title>
+    <!-- Link CSS file -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel = "stylesheet" href = "style.css">
+</head>
+
+<body>
+  <div class="phone-container">
+    <h1 class="page-title">You have a mail!</h1>
+
+    <!-- Mail Icon-->
+     <div class = middle-wrapper>
+        <button id="mail-btn" title="Open Message">
+            <!--📧-->
+            <image src = "mail.png" id="mail-icon"></image>
+        </button>
+     </div>
+
+    <!-- The Pop-up Letter Modal -->
+    <dialog id="message-modal">
+        <!-- Main Question View -->
+        <div id="letter-view" class="letter-content">
+            <h2>A Special Question from Joon</h2>
+          
+            <div class = "scrollable-text">
+              <p>
+                Joyce,
+                <br>
+                The past few days have felt like a whirlwind to me. 
+                It's so funny how we met (?), but I'm glad we did because I love every moment we've had together.
+                Every conversation, every meal, every text, every small new thing I learn about you each day. 
+                Even when we are apart, I can be happy just thinking about you.
+              </p>
+              <p>
+                I know things have been a little fast, so I understand if you would like to give it more time. The last thing I want is for you to feel like a rebound :< 
+                I'll wait as long as it takes and only if you feel it is right, because you have been such a sweetheart and deserve the best. 
+              </p>
+              <p>
+                But I like you! Everything feels so right when I'm with you and I cant shake this feeling off. 
+                When my heart wants something, I will pour everything I have to get it. And right now, my heart is only telling me one thing: "Never let her out of your life"
+              </p>
+              <p>
+                So when we get back, can we go out on a date? ><
+              </p>
+            </div>
+          
+            <div class="button-container">
+                <button id="yes-btn"></button>
+                <button id="no-btn"></button>
+            </div>
+        </div>
+    
+        <!-- Hidden Success View (Shown after clicking Yes) -->
+        <div id="success-view" class="letter-content hidden">
+            <h2>Yay! ^^</h2>
+            <p>Can't wait to see u <3</p>
+            <!-- Replace the URL below with any cute GIF link you like -->
+            <img src="chibi-anime-boy.gif" alt="Celebration GIF" class="success-gif">
+            <br>
+            <button id="close-btn"></button>
+        </div>
+    </dialog>
+  
+  </div>
+
+  <script src="script.js"></script>
+  
+</body>

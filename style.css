@@ -1,0 +1,247 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family:'VT323';
+    background-color: pink;
+}
+
+/* 2. The Phone Container (Applies your wallpaper) */
+.phone-container {
+    width: 100%;
+    height: 100%;
+    
+    /* Apply your mobile wallpaper */
+    background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url('background.jpg'); 
+    background-size: cover;       /* Ensures it fills the screen without distorting/stretching */
+    background-position: center;  /* Keeps the center of the wallpaper focused */
+    background-repeat: no-repeat;
+    
+    /* Flexbox layout to keep your title and mail button positioned correctly */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    box-sizing: border-box;
+}
+
+/* 3. PC-Only Restrictions (Ignored on actual phones) */
+@media (min-width: 481px) {
+    .phone-container {
+        /* Restrict width and height to typical mobile proportions */
+        max-width: 400px;   
+        max-height: 844px;  
+        
+        /* Optional: Gives it rounded corners and a border so it looks like a real phone on a PC! */
+        border-radius: 35px;
+        border: 12px solid #222;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    }
+}
+
+.page-title {
+    margin-top: 60px;
+    margin-left: 20px;
+    margin-right: 20px;
+    width: calc(100% - 40px);
+    text-align: center;
+    font-size: 48px;
+    /*background-color: #ffd1dc;*/
+}
+
+.middle-wrapper {
+    flex-grow: 1;
+    display: flex;
+    transform: translateY(-70px);
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);    /* Normal size */
+    }
+    50% {
+        transform: scale(1.12); /* Grows slightly bigger in the middle */
+    }
+    100% {
+        transform: scale(1);    /* Returns to normal size */
+    }
+}
+
+#mail-btn img {
+  width: 100px;
+  height:auto;
+}
+
+#mail-btn{
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+#mail-btn:hover {
+    animation: none;
+    transform: scale(1.4);
+    transition: transform 0.2s ease;
+}
+
+/* Styling the pop-up modal box */
+dialog {
+    width: 85%;
+    /*max-width: 90vh;*/
+    max-height: 90vh;     /* Caps the dialog height at 80% of the screen */
+    overflow-y: auto;
+    margin: auto;
+    padding: 0px;
+    /*border-radius: 16px;*/
+    border: 6px solid #333;
+    background-color: #FFF0FF;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    overflow: hidden;
+}
+
+/* --- THE POPPING OUT ANIMATION --- */
+/* When the dialog opens using showModal(), it triggers this keyframe animation */
+dialog[open] {
+    animation: popOut 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes popOut {
+    0% {
+        opacity: 0;
+        transform: scale(0.5); /* Starts small and invisible */
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);   /* Pops out to full normal size */
+    }
+}
+
+/* Utility class to hide elements */
+.hidden {
+    display: none !important;
+}
+
+.letter-content {
+    font-size: 24px;
+    display: flex;
+    flex-direction: column;
+    max-height: 80vh;     /* Matches dialog height */
+    padding: 25px;        /* Internal spacing */
+    box-sizing: border-box;
+    text-align: center;
+    align-items: center
+}
+
+.letter-content h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    flex-shrink: 0;       /* Prevents the header from squishing */
+}
+
+.scrollable-text {
+    overflow-y: auto;     /* Adds a scrollbar ONLY here when text overflows */
+    flex-grow: 1;         /* Expands to fill available vertical space */
+    padding-right: 5px;   /* Prevents scrollbar from touching the text */
+    text-align: center;
+    width: 100%
+}
+
+/* Container for the Yes/No buttons */
+.button-container {
+    flex-shrink: 0;       /* Prevents buttons from squishing */
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+}
+
+/* Yes Button Styling */
+#yes-btn {
+    /* 1. Set your normal button image */
+    background-image: url('yes.png'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    /* 2. Clear default button styles */
+    background-color: transparent;
+    border: none;
+    
+    /* 3. Set dimensions (adjust these to fit your image size!) */
+    width: 110px;
+    height: 50px;
+    
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 2;
+}
+
+#yes-btn.shift-right {
+    transform: translateX(65px) scale(1.3); /* Slides right and grows bigger */
+}
+
+/* Pressed effect for Yes */
+#yes-btn:active {
+    background-image: url('yes_pressed.png'); /* Swaps to pressed image */
+    transform: scale(0.95);                   /* Slight physical press-down feel */
+}
+
+/* No Button Styling */
+#no-btn {
+    /* 1. Set your normal button image */
+    background-image: url('no.png'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    /* 2. Clear default button styles */
+    background-color: transparent;
+    border: none;
+    
+    /* 3. Set dimensions (adjust to match your image) */
+    width: 55px;
+    height: 30px;
+    
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+#no-btn.fade-out {
+    opacity: 0;
+    pointer-events: none; /* Prevents clicking it while it fades */
+}
+
+/* Pressed effect for No */
+#no-btn:active {
+    background-image: url('no-pressed.png'); /* Swaps to pressed image */
+    transform: scale(0.95);
+}
+
+/* Success GIF Styling */
+.success-gif {
+    width: 200px;
+    height: auto;
+    border-radius: 10px;
+    margin: 15px 0;
+}
+
+/* Close button on the success screen */
+#close-btn {
+    background-image: url('restart.png'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    border: none;
+    width: 110px;
+    height: 50px;
+    cursor: pointer;
+}
