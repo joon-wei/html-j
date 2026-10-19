@@ -153,6 +153,21 @@ dialog[open] {
     width: 100%
 }
 
+/*Scrollbar*/
+.scrollable-text::-webkit-scrollbar {
+    width: 8px;     
+}
+
+.scrollable-text::-webkit-scrollbar-track {
+    background: #fdf0ed; 
+    border: 2px solid #333;
+}
+
+.scrollable-text::-webkit-scrollbar-thumb {
+    background: #ffb6c1; 
+    border: 2px solid #333;
+}
+
 /* Container for the Yes/No buttons */
 .button-container {
     flex-shrink: 0;       /* Prevents buttons from squishing */
