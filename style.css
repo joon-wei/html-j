@@ -18,8 +18,6 @@ body {
     background-size: cover;       /* Ensures it fills the screen without distorting/stretching */
     background-position: center;  /* Keeps the center of the wallpaper focused */
     background-repeat: no-repeat;
-    
-    /* Flexbox layout to keep your title and mail button positioned correctly */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -206,7 +204,7 @@ dialog[open] {
 /* Pressed effect for Yes */
 #yes-btn:active {
     background-image: url('yes_pressed.png'); /* Swaps to pressed image */
-    transform: scale(0.95);                   /* Slight physical press-down feel */
+    /*transform: scale(0.95);*/                   /* Slight physical press-down feel */
 }
 
 /* No Button Styling */
@@ -236,8 +234,8 @@ dialog[open] {
 
 /* Pressed effect for No */
 #no-btn:active {
-    background-image: url('no-pressed.png'); /* Swaps to pressed image */
-    transform: scale(0.95);
+    background-image: url('no_pressed.png'); /* Swaps to pressed image */
+    /*transform: scale(0.95);*/
 }
 
 /* Success GIF Styling */
